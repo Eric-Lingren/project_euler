@@ -46,31 +46,23 @@
 
 //////////////////////////////////////////////////////////////////////////////
 
-// function problem2(){
-//     let fibArr = [1, 2]
-    
-//     for (i = 0; i < 30; i++){
-//         let lastNumber = fibArr[fibArr.length - 1]
-//         let secondToLastNumber = fibArr[fibArr.length - 2]
-//         let nextNumber = lastNumber + secondToLastNumber
-//         fibArr.push(nextNumber)
-//     }
-    
-//     let evenFibNumbers = []
-//     for (let i = 0; i < fibArr.length; i++){
-//         if(fibArr[i] % 2 === 0){
-//             evenFibNumbers.push(fibArr[i])
-//         }
-//     }
+function problem2(){
+    let fibArr = [1, 2]
+    let total = 0
 
-//     let result = evenFibNumbers.reduce((total, number) => {
-//         return total + number
-//     })
+    while(fibArr[fibArr.length - 1] < 4000000){
+        let lastNumber = fibArr[fibArr.length - 1]
+        let secondToLastNumber = fibArr[fibArr.length - 2]
+        let nextNumber = lastNumber + secondToLastNumber
+        fibArr.push(nextNumber)
+            if(nextNumber % 2 === 0 ){
+                total += nextNumber
+            } 
+    }
+    console.log(total)
+}
 
-//     console.log(result)
-// }
-
-// problem2()
+problem2()
 
 
 
