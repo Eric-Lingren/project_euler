@@ -2,29 +2,7 @@ let buttons = document.getElementsByClassName('answer-button')
 let answerContainers = document.getElementsByClassName("answer-container")
 //console.log(answerContainers[0].style.visibility)
 
-for(let i = 0; i < buttons.length; i++){
-    buttons[i].addEventListener('click', showAnswer)
-    function showAnswer(){
-        answerContainers[i].className = 'answer-container-showing'
 
-        // console.dir(answerContainers[i].className)
-        // if(answerContainers[i].className === 'answer-container' ){
-        //     answerContainers[i].className = 'answer-container-showing'
-        // } else{
-        //     answerContainers[i].className = 'answer-container'
-        // }
-        
-    }
-
-
-}
-
-function showAnswer0(){
-    console.log('func 0 ran')
-}
-function showAnswer1(){
-    console.log('func 1 ran')
-}
 
 ////////////////////////////////////////////
 //               Problem 1:               //
@@ -51,15 +29,23 @@ function problem1(){
     let result = numbersArr.reduce((total, number) =>{
         return total + number
     })
-    //console.log(result)
+    console.log(result)
 
-    //let answerContainer = document.getElementsByClassName("answer-container");
-    answerContainers[0].innerHTML = result
+
+    let answerContainer = document.getElementById("answer-container-1");
+    answerContainer.innerHTML = result
+
+    if(answerContainer.className === 'answer-container'){
+        answerContainer.className = 'answer-container-showing'
+        document.getElementById('answer-button-1').innerHTML = 'Hide Answer'
+    } else if(answerContainer.className === 'answer-container-showing'){
+        answerContainer.className = 'answer-container'
+        document.getElementById('answer-button-1').innerHTML = 'Show Answer'
+    }
 }
+// problem1()
 
-problem1()
-
-
+document.getElementById('answer-button-1').addEventListener('click', problem1)
 
 
 
