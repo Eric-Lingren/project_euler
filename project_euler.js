@@ -116,16 +116,27 @@ problem3(600851475143)
 //  Find the largest palindrome made from the product of two 3-digit numbers.
 
 function problem4(){
-    console.log('problem 4 ran')
-    for(let i = 100; i < 1000; i++){
-        for(let j = 100; j < 1000; j++){
+    let largestProduct = {
+        num1 : 0,
+        num2 : 0,
+        product: 0
+    }
+
+    for(let i = 999; i > 99; i--){
+        for(let j = 999; j > 99; j--){
             let product = i * j
             let productString = product.toString()
             let reversedProduct = product.toString().split("").reverse().join("")
-
+            if(productString === reversedProduct && product > largestProduct.product){
+                largestProduct = {
+                    num1: i,
+                    num2: j,
+                    product: product
+                }
+            }
         }
     }
+    console.log(largestProduct)
 }
-
 
 problem4()
