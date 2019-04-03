@@ -132,7 +132,7 @@ function problem3(num){
     }
     let largestFactor = primeFactors.pop()
 
-    console.log(largestFactor)
+    // console.log(largestFactor)
     answerContainers[2].innerHTML = largestFactor
 }
 
@@ -170,10 +170,11 @@ function problem4(){
             }
         }
     }
-    console.log(largestProduct)
+    // console.log(largestProduct.product)
+    answerContainers[3].innerHTML = largestProduct.product
 }
 
-// problem4()
+problem4()
 
 
 
@@ -194,13 +195,14 @@ function problem5(){
     while(!numberFound){
         increment +=20
         if (increment % 19 === 0 && increment % 18 === 0 && increment % 17 === 0 && increment % 16 === 0 && increment % 15 === 0 &&     increment % 14 === 0 && increment % 13 === 0 && increment % 12 === 0  && increment % 11 === 0 ){
-            console.log(increment)
+            // console.log(increment)
             numberFound = true
+            answerContainers[4].innerHTML = increment
         }
     }
 }
 
-// problem5()
+problem5()
 
 
 
