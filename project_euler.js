@@ -59,7 +59,7 @@ function problem2(){
                 total += nextNumber
             } 
     }
-    console.log(total)
+    //console.log(total)
 }
 
 problem2()
@@ -77,8 +77,29 @@ problem2()
 
 //  What is the largest prime factor of the number 600851475143 ?
 
-function problem3(){
+function problem3(num){
+    let primeFactors = [];
 
+    while (num % 2 === 0) {
+        primeFactors.push(2);
+        num = num / 2;
+    }
+    console.log(num)
+    let sqrtNum = Math.sqrt(num);
+    console.log(sqrtNum)
+
+    for (let i = 3; i <= sqrtNum; i++) {
+        while (num % i === 0) {
+            primeFactors.push(i);
+            num = num / i;
+            console.log('new num is ' + num)
+        }
+    }
+
+    if (num > 2) {
+        primeFactors.push(num);
+    }
+    console.log(primeFactors)
 }
 
-problem3()
+problem3(13195)
