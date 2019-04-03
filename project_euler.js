@@ -201,3 +201,45 @@ function problem6(){
 }
 
 // problem6()
+
+
+
+
+
+
+////////////////////////////////////////////
+//              Problem 7:                //
+//            10001st prime               // 
+////////////////////////////////////////////
+
+// By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.
+
+// What is the 10001st prime number?
+
+function problem7(){
+    let primeNumbersArray = []
+
+    let num = 2
+    while(primeNumbersArray.length < 10000){
+        num++
+        let checkingNumber = true
+        let increment = 2
+        while(checkingNumber){
+            if (num === increment){
+                // number is prime
+                primeNumbersArray.push(num)
+                checkingNumber = false
+            } else if (num % increment === 0){
+                // number is not prime and break the checks
+                checkingNumber = false
+            }
+            increment++
+        }
+    }
+    
+    let result = primeNumbersArray.pop()
+    console.log(result)
+    
+}
+
+problem7()
