@@ -1,3 +1,6 @@
+// document.getElementsByClassName('answer-container')
+
+
 ////////////////////////////////////////////
 //               Problem 1:               //
 //          Multiples of 3 and 5          //
@@ -24,9 +27,11 @@ function problem1(){
         return total + number
     })
     console.log(result)
+    let answerContainer = document.getElementsByClassName("answer-container");
+    answerContainer[0].innerHTML = result
 }
 
-// problem1()
+problem1()
 
 
 
@@ -236,7 +241,7 @@ function problem7(){
             increment++
         }
     }
-    
+
     let result = primeNumbersArray.pop()
     console.log(result)
     
