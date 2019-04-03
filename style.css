@@ -1,0 +1,37 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+.page-wrapper{
+    /* display: flex; */
+    
+    width: 70%;
+    /* flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center; */
+}
+.header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    
+}
+.quesiton-contatiner{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+.question-header{
+    margin-bottom: 0;
+}
+.question{
+    font-size: 1.4em;
+}
