@@ -27,6 +27,9 @@ body{
     align-content: center;
     align-items: center;
     margin-bottom: 70px;
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 0px 20px 20px 20px;
 }
 
 .question-header{
@@ -52,11 +55,15 @@ body{
     align-items: center;
     font-size: 1.2em;
     visibility: hidden;
+    font-weight: bold;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 1px solid white;
 }
 
 .answer-container-showing{
     height: 50px;
-    width: 100%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -64,6 +71,11 @@ body{
     align-items: center;
     font-size: 1.2em;
     visibility: block;
+    background-color: #89DA3E;
+    font-weight: bold;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 1px solid black;
 }
 
 .answer-button{
