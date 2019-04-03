@@ -84,22 +84,48 @@ function problem3(num){
         primeFactors.push(2);
         num = num / 2;
     }
-    console.log(num)
+    
     let sqrtNum = Math.sqrt(num);
-    console.log(sqrtNum)
 
     for (let i = 3; i <= sqrtNum; i++) {
         while (num % i === 0) {
             primeFactors.push(i);
             num = num / i;
-            console.log('new num is ' + num)
         }
     }
 
     if (num > 2) {
         primeFactors.push(num);
     }
-    console.log(primeFactors)
+    let largestFactor = primeFactors.pop()
+
+    //console.log(largestFactor)
 }
 
-problem3(13195)
+problem3(600851475143)
+
+
+////////////////////////////////////////////
+//              Problem 4                 //
+//     Largest palindrome product         // 
+////////////////////////////////////////////
+
+//  A palindromic number reads the same both ways. 
+//  The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
+
+//  Find the largest palindrome made from the product of two 3-digit numbers.
+
+function problem4(){
+    console.log('problem 4 ran')
+    for(let i = 100; i < 1000; i++){
+        for(let j = 100; j < 1000; j++){
+            let product = i * j
+            let productString = product.toString()
+            let reversedProduct = product.toString().split("").reverse().join("")
+
+        }
+    }
+}
+
+
+problem4()
