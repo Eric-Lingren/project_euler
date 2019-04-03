@@ -233,10 +233,11 @@ function problem6(){
 
     let squareOfSums = sums * sums
     let result = squareOfSums - sumOfSquares
-    console.log(result)
+    // console.log(result)
+    answerContainers[5].innerHTML = result
 }
 
-// problem6()
+problem6()
 
 
 
