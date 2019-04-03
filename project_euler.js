@@ -1,4 +1,19 @@
-// document.getElementsByClassName('answer-container')
+let buttons = document.getElementsByClassName('answer-button')
+let answerContainers = document.getElementsByClassName("answer-container")
+//console.log(answerContainers[0].style.visibility)
+
+for(let i = 0; i < buttons.length; i++){
+    buttons[i].addEventListener('click', showAnswer)
+    function showAnswer(){
+        console.dir(answerContainers[i].className)
+        if(answerContainers[i].className === 'answer-container' ){
+            answerContainers[i].className = 'answer-container-showing'
+        } else{
+            answerContainers[i].className = 'answer-container'
+        }
+        
+    }
+}
 
 
 ////////////////////////////////////////////
@@ -26,9 +41,10 @@ function problem1(){
     let result = numbersArr.reduce((total, number) =>{
         return total + number
     })
-    console.log(result)
-    let answerContainer = document.getElementsByClassName("answer-container");
-    answerContainer[0].innerHTML = result
+    //console.log(result)
+
+    //let answerContainer = document.getElementsByClassName("answer-container");
+    answerContainers[0].innerHTML = result
 }
 
 problem1()
@@ -53,7 +69,7 @@ problem1()
 
 function problem2(){
     let fibArr = [1, 2]
-    let total = 0
+    let result = 0
 
     while(fibArr[fibArr.length - 1] < 4000000){
         let lastNumber = fibArr[fibArr.length - 1]
@@ -61,13 +77,15 @@ function problem2(){
         let nextNumber = lastNumber + secondToLastNumber
         fibArr.push(nextNumber)
             if(nextNumber % 2 === 0 ){
-                total += nextNumber
+                result += nextNumber
             } 
     }
-    console.log(total)
+    // console.log(result)
+    //let answerContainer = document.getElementsByClassName("answer-container");
+    answerContainers[1].innerHTML = result
 }
 
-// problem2()
+problem2()
 
 
 

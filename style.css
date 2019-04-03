@@ -26,6 +26,7 @@ body{
     justify-content: center;
     align-content: center;
     align-items: center;
+    margin-bottom: 70px;
 }
 
 .question-header{
@@ -42,8 +43,27 @@ body{
 }
 
 .answer-container{
-    height: 100px;
-    background-color: red;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    visibility: hidden;
+}
+
+.answer-container-showing{
+    height: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    visibility: block;
 }
 
 .answer-button{
