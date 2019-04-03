@@ -275,8 +275,8 @@ function problem7(){
     }
 
     let result = primeNumbersArray.pop()
-    console.log(result)
-    
+    // console.log(result)
+    answerContainers[6].innerHTML = result
 }
 
 problem7()
