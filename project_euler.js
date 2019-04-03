@@ -1,5 +1,5 @@
 ////////////////////////////////////////////
-//               Problem 1                //
+//               Problem 1:               //
 //          Multiples of 3 and 5          //
 ////////////////////////////////////////////
 
@@ -9,22 +9,22 @@
 
 ///////////////////////////////////////////////////////////////////////////////////
 
-// function problem1(){
-//     let numbersArr = []
-//     for (let i = 0; i < 1000; i++){
+function problem1(){
+    let numbersArr = []
+    for (let i = 0; i < 1000; i++){
         
-//         if(i % 5 === 0) {
-//             numbersArr.push(i)
-//         } else if (i % 3 === 0){
-//             numbersArr.push(i)
-//         }
-//     }
+        if(i % 5 === 0) {
+            numbersArr.push(i)
+        } else if (i % 3 === 0){
+            numbersArr.push(i)
+        }
+    }
 
-//     let result = numbersArr.reduce((total, number) =>{
-//         return total + number
-//     })
-//     console.log(result)
-// }
+    let result = numbersArr.reduce((total, number) =>{
+        return total + number
+    })
+    console.log(result)
+}
 
 // problem1()
 
@@ -34,7 +34,7 @@
 
 
 ////////////////////////////////////////////
-//              Problem 2                 //
+//              Problem 2:                //
 //        Even Fibonacci numbers          // 
 ////////////////////////////////////////////
 
@@ -59,17 +59,17 @@ function problem2(){
                 total += nextNumber
             } 
     }
-    //console.log(total)
+    console.log(total)
 }
 
-problem2()
+// problem2()
 
 
 
 
 
 ////////////////////////////////////////////
-//              Problem 3                 //
+//              Problem 3:                //
 //         Largest prime factor           // 
 ////////////////////////////////////////////
 
@@ -99,14 +99,14 @@ function problem3(num){
     }
     let largestFactor = primeFactors.pop()
 
-    //console.log(largestFactor)
+    console.log(largestFactor)
 }
 
-problem3(600851475143)
+// problem3(600851475143)
 
 
 ////////////////////////////////////////////
-//              Problem 4                 //
+//              Problem 4:                //
 //     Largest palindrome product         // 
 ////////////////////////////////////////////
 
@@ -139,4 +139,31 @@ function problem4(){
     console.log(largestProduct)
 }
 
-problem4()
+// problem4()
+
+
+
+
+
+////////////////////////////////////////////
+//              Problem 5:                //
+//          Smallest multiple             // 
+////////////////////////////////////////////
+
+// 2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
+
+// What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
+
+function problem5(){
+    let numberFound = false
+    let increment = 20;
+    while(!numberFound){
+        increment +=20
+        if (increment % 19 === 0 && increment % 18 === 0 && increment % 17 === 0 && increment % 16 === 0 && increment % 15 === 0 &&     increment % 14 === 0 && increment % 13 === 0 && increment % 12 === 0  && increment % 11 === 0 ){
+            console.log(increment)
+            numberFound = true
+        }
+    }
+}
+
+// problem5()
