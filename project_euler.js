@@ -32,6 +32,7 @@ function problem1(){
     console.log(result)
 
 
+        //  JS for HTML Interaction
     let answerContainer = document.getElementById("answer-container-1");
     answerContainer.innerHTML = result
 
@@ -76,13 +77,24 @@ function problem2(){
                 result += nextNumber
             } 
     }
-    // console.log(result)
-    //let answerContainer = document.getElementsByClassName("answer-container");
-    answerContainers[1].innerHTML = result
+        console.log(result)
+
+
+        //  JS for HTML Interaction
+    let answerContainer = document.getElementById("answer-container-2");
+    answerContainer.innerHTML = result
+
+    if(answerContainer.className === 'answer-container'){
+        answerContainer.className = 'answer-container-showing'
+        document.getElementById('answer-button-2').innerHTML = 'Hide Answer'
+    } else if(answerContainer.className === 'answer-container-showing'){
+        answerContainer.className = 'answer-container'
+        document.getElementById('answer-button-2').innerHTML = 'Show Answer'
+    }
 }
+// problem2()
 
-problem2()
-
+document.getElementById('answer-button-2').addEventListener('click', problem2)
 
 
 
@@ -96,7 +108,8 @@ problem2()
 
 //  What is the largest prime factor of the number 600851475143 ?
 
-function problem3(num){
+function problem3(){
+    let num = 600851475143
     let primeFactors = [];
 
     while (num % 2 === 0) {
@@ -118,11 +131,29 @@ function problem3(num){
     }
     let largestFactor = primeFactors.pop()
 
-    // console.log(largestFactor)
-    answerContainers[2].innerHTML = largestFactor
-}
+    console.log(largestFactor)
 
-problem3(600851475143)
+        
+        //  JS for HTML Interaction
+    let answerContainer = document.getElementById("answer-container-3");
+    answerContainer.innerHTML = largestFactor
+
+    if(answerContainer.className === 'answer-container'){
+        answerContainer.className = 'answer-container-showing'
+        document.getElementById('answer-button-3').innerHTML = 'Hide Answer'
+    } else if(answerContainer.className === 'answer-container-showing'){
+        answerContainer.className = 'answer-container'
+        document.getElementById('answer-button-3').innerHTML = 'Show Answer'
+    }
+}
+// problem3()
+
+document.getElementById('answer-button-3').addEventListener('click', problem3)
+
+
+
+
+
 
 
 ////////////////////////////////////////////
