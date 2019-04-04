@@ -187,11 +187,23 @@ function problem4(){
             }
         }
     }
-    // console.log(largestProduct.product)
-    answerContainers[3].innerHTML = largestProduct.product
-}
+    console.log(largestProduct.product)
 
-problem4()
+        //  JS for HTML Interaction
+        let answerContainer = document.getElementById("answer-container-4");
+        answerContainer.innerHTML = largestProduct.product
+    
+        if(answerContainer.className === 'answer-container'){
+            answerContainer.className = 'answer-container-showing'
+            document.getElementById('answer-button-4').innerHTML = 'Hide Answer'
+        } else if(answerContainer.className === 'answer-container-showing'){
+            answerContainer.className = 'answer-container'
+            document.getElementById('answer-button-4').innerHTML = 'Show Answer'
+        }
+    }
+    // problem4()
+    
+    document.getElementById('answer-button-4').addEventListener('click', problem4)
 
 
 
