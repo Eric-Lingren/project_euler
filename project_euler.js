@@ -187,7 +187,7 @@ function problem4(){
             }
         }
     }
-    console.log(largestProduct.product)
+    // console.log(largestProduct.product)
 
         //  JS for HTML Interaction
         let answerContainer = document.getElementById("answer-container-4");
@@ -221,17 +221,33 @@ function problem4(){
 function problem5(){
     let numberFound = false
     let increment = 20;
+    let result = 0
     while(!numberFound){
         increment +=20
         if (increment % 19 === 0 && increment % 18 === 0 && increment % 17 === 0 && increment % 16 === 0 && increment % 15 === 0 &&     increment % 14 === 0 && increment % 13 === 0 && increment % 12 === 0  && increment % 11 === 0 ){
-            // console.log(increment)
+            result = increment
             numberFound = true
             answerContainers[4].innerHTML = increment
         }
     }
-}
 
-problem5()
+    // console.log(result)
+
+        //  JS for HTML Interaction
+        let answerContainer = document.getElementById("answer-container-5");
+        answerContainer.innerHTML = result
+    
+        if(answerContainer.className === 'answer-container'){
+            answerContainer.className = 'answer-container-showing'
+            document.getElementById('answer-button-5').innerHTML = 'Hide Answer'
+        } else if(answerContainer.className === 'answer-container-showing'){
+            answerContainer.className = 'answer-container'
+            document.getElementById('answer-button-5').innerHTML = 'Show Answer'
+        }
+    }
+    // problem5()
+    
+    document.getElementById('answer-button-5').addEventListener('click', problem5)
 
 
 
@@ -259,14 +275,27 @@ function problem6(){
         sumOfSquares += i*i
         sums += i
     }
-
     let squareOfSums = sums * sums
     let result = squareOfSums - sumOfSquares
-    // console.log(result)
-    answerContainers[5].innerHTML = result
-}
 
-problem6()
+    // console.log(result)
+    
+
+        //  JS for HTML Interaction
+        let answerContainer = document.getElementById("answer-container-6");
+        answerContainer.innerHTML = result
+    
+        if(answerContainer.className === 'answer-container'){
+            answerContainer.className = 'answer-container-showing'
+            document.getElementById('answer-button-6').innerHTML = 'Hide Answer'
+        } else if(answerContainer.className === 'answer-container-showing'){
+            answerContainer.className = 'answer-container'
+            document.getElementById('answer-button-6').innerHTML = 'Show Answer'
+        }
+    }
+    // problem6()
+    
+    document.getElementById('answer-button-6').addEventListener('click', problem6)
 
 
 
@@ -302,10 +331,22 @@ function problem7(){
             increment++
         }
     }
-
     let result = primeNumbersArray.pop()
     // console.log(result)
-    answerContainers[6].innerHTML = result
-}
+    
 
-problem7()
+        //  JS for HTML Interaction
+        let answerContainer = document.getElementById("answer-container-7");
+        answerContainer.innerHTML = result
+    
+        if(answerContainer.className === 'answer-container'){
+            answerContainer.className = 'answer-container-showing'
+            document.getElementById('answer-button-7').innerHTML = 'Hide Answer'
+        } else if(answerContainer.className === 'answer-container-showing'){
+            answerContainer.className = 'answer-container'
+            document.getElementById('answer-button-7').innerHTML = 'Show Answer'
+        }
+    }
+    // problem7()
+    
+    document.getElementById('answer-button-7').addEventListener('click', problem7)
