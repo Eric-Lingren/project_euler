@@ -277,22 +277,20 @@ function problem6(){
     }
     let squareOfSums = sums * sums
     let result = squareOfSums - sumOfSquares
-
-    // console.log(result)
     
 
-        //  JS for HTML Interaction
-        let answerContainer = document.getElementById("answer-container-6");
-        answerContainer.innerHTML = result
-    
-        if(answerContainer.className === 'answer-container'){
-            answerContainer.className = 'answer-container-showing'
-            document.getElementById('answer-button-6').innerHTML = 'Hide Answer'
-        } else if(answerContainer.className === 'answer-container-showing'){
-            answerContainer.className = 'answer-container'
-            document.getElementById('answer-button-6').innerHTML = 'Show Answer'
-        }
+    //  JS for HTML Interaction
+    let answerContainer = document.getElementById("answer-container-6");
+    answerContainer.innerHTML = result
+
+    if(answerContainer.className === 'answer-container'){
+        answerContainer.className = 'answer-container-showing'
+        document.getElementById('answer-button-6').innerHTML = 'Hide Answer'
+    } else if(answerContainer.className === 'answer-container-showing'){
+        answerContainer.className = 'answer-container'
+        document.getElementById('answer-button-6').innerHTML = 'Show Answer'
     }
+}
     // problem6()
     
     document.getElementById('answer-button-6').addEventListener('click', problem6)
@@ -332,21 +330,20 @@ function problem7(){
         }
     }
     let result = primeNumbersArray.pop()
-    // console.log(result)
     
 
-        //  JS for HTML Interaction
-        let answerContainer = document.getElementById("answer-container-7");
-        answerContainer.innerHTML = result
-    
-        if(answerContainer.className === 'answer-container'){
-            answerContainer.className = 'answer-container-showing'
-            document.getElementById('answer-button-7').innerHTML = 'Hide Answer'
-        } else if(answerContainer.className === 'answer-container-showing'){
-            answerContainer.className = 'answer-container'
-            document.getElementById('answer-button-7').innerHTML = 'Show Answer'
-        }
+    //  JS for HTML Interaction
+    let answerContainer = document.getElementById("answer-container-7");
+    answerContainer.innerHTML = result
+
+    if(answerContainer.className === 'answer-container'){
+        answerContainer.className = 'answer-container-showing'
+        document.getElementById('answer-button-7').innerHTML = 'Hide Answer'
+    } else if(answerContainer.className === 'answer-container-showing'){
+        answerContainer.className = 'answer-container'
+        document.getElementById('answer-button-7').innerHTML = 'Show Answer'
     }
+}
     // problem7()
     
     document.getElementById('answer-button-7').addEventListener('click', problem7)
