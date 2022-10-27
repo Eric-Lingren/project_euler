@@ -1,6 +1,60 @@
 let buttons = document.getElementsByClassName('answer-button')
 let answerContainers = document.getElementsByClassName("answer-container")
-//console.log(answerContainers[0].style.visibility)
+const loader = document.getElementById(`loader`)
+
+const checkShouldRun = (problemNumber) => {
+    const button = document.getElementById(`answer-button-${problemNumber}`)
+    if(button.innerText === 'Run') return true
+    return false
+}
+
+const displayLoader = (problemNumber) => {
+    console.log('in dispaly loader')
+    const questionContainer = document.getElementById(`questionContainer${problemNumber}`)
+    console.log(questionContainer)
+    const button = document.getElementById(`answer-button-${problemNumber}`)
+    button.parentNode.removeChild(button)
+
+    let clonedLoader = loader.cloneNode(true)
+    clonedLoader.id = `loader${problemNumber}`
+    questionContainer.appendChild(clonedLoader)
+    
+    console.log('end display loader')
+}
+
+//  JS for HTML Interactions
+const showAnswerBox = (problemNumber, result, runTimeMs) => {
+    let answerContainer = document.getElementById(`answer-container-${problemNumber}`)
+    let answerText = document.createElement('h5')
+    answerText.className = 'answer-box-text'
+    answerText.textContent = 'Result: ' + result
+    let runtimeText = document.createElement('h5')
+    runtimeText.className = 'answer-box-text'
+    runtimeText.textContent = 'Milliseconds: ' + runTimeMs
+    answerContainer.appendChild(answerText)
+    answerContainer.appendChild(runtimeText)
+    answerContainer.className = `answer-showing`
+
+    const questionContainer = document.getElementById(`questionContainer${problemNumber}`)
+    const loader = document.getElementById(`loader${problemNumber}`)
+    loader.parentNode.removeChild(loader)
+    let hideAnswerButton = document.createElement('button')
+    hideAnswerButton.innerText = 'Hide Answer'
+    hideAnswerButton.id = `answer-button-${problemNumber}`
+    hideAnswerButton.className = 'answer-button'
+    hideAnswerButton.addEventListener('click', eval('problem'+problemNumber) )
+    questionContainer.appendChild(hideAnswerButton)
+}
+
+//  JS for HTML Interactions
+const hideAnswerBox = (problemNumber) => {
+    let answerContainer = document.getElementById(`answer-container-${problemNumber}`);
+    while (answerContainer.firstChild) {
+        answerContainer.removeChild(answerContainer.firstChild);
+    }
+    answerContainer.className = `answer-hidden`
+    document.getElementById(`answer-button-${problemNumber}`).innerText = `Run`
+}
 
 
 
@@ -10,42 +64,28 @@ let answerContainers = document.getElementsByClassName("answer-container")
 ////////////////////////////////////////////
 
 // If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
-
 // Find the sum of all the multiples of 3 or 5 below 1000.
 
-///////////////////////////////////////////////////////////////////////////////////
-
 function problem1(){
+    //! Display the DOM Renders
+    const problemNumber = 1
+    let shouldRun = checkShouldRun(problemNumber)
+    if(!shouldRun) return hideAnswerBox(problemNumber)
+    displayLoader(problemNumber)
+
+    //! Solution Code
+    const startTime = performance.now()
     let numbersArr = []
     for (let i = 0; i < 1000; i++){
-        
-        if(i % 5 === 0) {
-            numbersArr.push(i)
-        } else if (i % 3 === 0){
-            numbersArr.push(i)
-        }
+        if(i % 5 === 0) numbersArr.push(i)
+        if(i % 3 === 0) numbersArr.push(i)
     }
+    const result = numbersArr.reduce((total, number) => total + number)
 
-    let result = numbersArr.reduce((total, number) =>{
-        return total + number
-    })
-    console.log(result)
-
-
-        //  JS for HTML Interaction
-    let answerContainer = document.getElementById("answer-container-1");
-    answerContainer.innerHTML = result
-
-    if(answerContainer.className === 'answer-container'){
-        answerContainer.className = 'answer-container-showing'
-        document.getElementById('answer-button-1').innerHTML = 'Hide Answer'
-    } else if(answerContainer.className === 'answer-container-showing'){
-        answerContainer.className = 'answer-container'
-        document.getElementById('answer-button-1').innerHTML = 'Show Answer'
-    }
+    //! Sets Solution on DOM
+    const runTimeMs = (performance.now() - startTime).toFixed(4)
+    showAnswerBox(problemNumber, result, runTimeMs)
 }
-// problem1()
-
 document.getElementById('answer-button-1').addEventListener('click', problem1)
 
 
@@ -65,6 +105,14 @@ document.getElementById('answer-button-1').addEventListener('click', problem1)
 //////////////////////////////////////////////////////////////////////////////
 
 function problem2(){
+    //! Display the DOM Renders
+    const problemNumber = 2
+    let shouldRun = checkShouldRun(problemNumber)
+    if(!shouldRun) return hideAnswerBox(problemNumber)
+    displayLoader(problemNumber)
+
+    //! Solution Code
+    const startTime = performance.now()
     let fibArr = [1, 2]
     let result = 0
 
@@ -77,23 +125,11 @@ function problem2(){
                 result += nextNumber
             } 
     }
-        console.log(result)
 
-
-        //  JS for HTML Interaction
-    let answerContainer = document.getElementById("answer-container-2");
-    answerContainer.innerHTML = result
-
-    if(answerContainer.className === 'answer-container'){
-        answerContainer.className = 'answer-container-showing'
-        document.getElementById('answer-button-2').innerHTML = 'Hide Answer'
-    } else if(answerContainer.className === 'answer-container-showing'){
-        answerContainer.className = 'answer-container'
-        document.getElementById('answer-button-2').innerHTML = 'Show Answer'
-    }
+    //! Sets Solution on DOM
+    const runTimeMs = (performance.now() - startTime).toFixed(4)
+    showAnswerBox(problemNumber, result, runTimeMs)
 }
-// problem2()
-
 document.getElementById('answer-button-2').addEventListener('click', problem2)
 
 
@@ -109,6 +145,14 @@ document.getElementById('answer-button-2').addEventListener('click', problem2)
 //  What is the largest prime factor of the number 600851475143 ?
 
 function problem3(){
+    //! Display the DOM Renders
+    const problemNumber = 3
+    let shouldRun = checkShouldRun(problemNumber)
+    if(!shouldRun) return hideAnswerBox(problemNumber)
+    displayLoader(problemNumber)
+
+    //! Solution Code
+    const startTime = performance.now()
     let num = 600851475143
     let primeFactors = [];
 
@@ -126,28 +170,13 @@ function problem3(){
         }
     }
 
-    if (num > 2) {
-        primeFactors.push(num);
-    }
-    let largestFactor = primeFactors.pop()
+    if (num > 2) primeFactors.push(num)
+    let result = primeFactors.pop()
 
-    console.log(largestFactor)
-
-        
-        //  JS for HTML Interaction
-    let answerContainer = document.getElementById("answer-container-3");
-    answerContainer.innerHTML = largestFactor
-
-    if(answerContainer.className === 'answer-container'){
-        answerContainer.className = 'answer-container-showing'
-        document.getElementById('answer-button-3').innerHTML = 'Hide Answer'
-    } else if(answerContainer.className === 'answer-container-showing'){
-        answerContainer.className = 'answer-container'
-        document.getElementById('answer-button-3').innerHTML = 'Show Answer'
-    }
+    //! Sets Solution on DOM
+    const runTimeMs = (performance.now() - startTime).toFixed(4)
+    showAnswerBox(problemNumber, result, runTimeMs)
 }
-// problem3()
-
 document.getElementById('answer-button-3').addEventListener('click', problem3)
 
 
@@ -167,6 +196,14 @@ document.getElementById('answer-button-3').addEventListener('click', problem3)
 //  Find the largest palindrome made from the product of two 3-digit numbers.
 
 function problem4(){
+    //! Display the DOM Renders
+    const problemNumber = 4
+    let shouldRun = checkShouldRun(problemNumber)
+    if(!shouldRun) return hideAnswerBox(problemNumber)
+    displayLoader(problemNumber)
+
+    //! Solution Code
+    const startTime = performance.now()
     let largestProduct = {
         num1 : 0,
         num2 : 0,
@@ -187,23 +224,13 @@ function problem4(){
             }
         }
     }
-    // console.log(largestProduct.product)
+    result = largestProduct.product
 
-        //  JS for HTML Interaction
-        let answerContainer = document.getElementById("answer-container-4");
-        answerContainer.innerHTML = largestProduct.product
-    
-        if(answerContainer.className === 'answer-container'){
-            answerContainer.className = 'answer-container-showing'
-            document.getElementById('answer-button-4').innerHTML = 'Hide Answer'
-        } else if(answerContainer.className === 'answer-container-showing'){
-            answerContainer.className = 'answer-container'
-            document.getElementById('answer-button-4').innerHTML = 'Show Answer'
-        }
-    }
-    // problem4()
-    
-    document.getElementById('answer-button-4').addEventListener('click', problem4)
+    //! Sets Solution on DOM
+    const runTimeMs = (performance.now() - startTime).toFixed(4)
+    showAnswerBox(problemNumber, result, runTimeMs)
+}
+document.getElementById('answer-button-4').addEventListener('click', problem4)
 
 
 
@@ -219,6 +246,14 @@ function problem4(){
 // What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
 
 function problem5(){
+    //! Display the DOM Renders
+    const problemNumber = 5
+    let shouldRun = checkShouldRun(problemNumber)
+    if(!shouldRun) return hideAnswerBox(problemNumber)
+    displayLoader(problemNumber)
+
+    //! Solution Code
+    const startTime = performance.now()
     let numberFound = false
     let increment = 20;
     let result = 0
@@ -227,27 +262,14 @@ function problem5(){
         if (increment % 19 === 0 && increment % 18 === 0 && increment % 17 === 0 && increment % 16 === 0 && increment % 15 === 0 &&     increment % 14 === 0 && increment % 13 === 0 && increment % 12 === 0  && increment % 11 === 0 ){
             result = increment
             numberFound = true
-            answerContainers[4].innerHTML = increment
         }
     }
 
-    // console.log(result)
-
-        //  JS for HTML Interaction
-        let answerContainer = document.getElementById("answer-container-5");
-        answerContainer.innerHTML = result
-    
-        if(answerContainer.className === 'answer-container'){
-            answerContainer.className = 'answer-container-showing'
-            document.getElementById('answer-button-5').innerHTML = 'Hide Answer'
-        } else if(answerContainer.className === 'answer-container-showing'){
-            answerContainer.className = 'answer-container'
-            document.getElementById('answer-button-5').innerHTML = 'Show Answer'
-        }
-    }
-    // problem5()
-    
-    document.getElementById('answer-button-5').addEventListener('click', problem5)
+    //! Sets Solution on DOM
+    const runTimeMs = (performance.now() - startTime).toFixed(4)
+    showAnswerBox(problemNumber, result, runTimeMs)
+}
+document.getElementById('answer-button-5').addEventListener('click', problem5)
 
 
 
@@ -268,6 +290,14 @@ function problem5(){
 // Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
 
 function problem6(){
+    //! Configures the DOM Renders
+    const problemNumber = 6
+    let shouldRun = checkShouldRun(problemNumber)
+    if(!shouldRun) return hideAnswerBox(problemNumber)
+    displayLoader(problemNumber)
+
+    //! Solution Code
+    const startTime = performance.now()
     let sumOfSquares = 0
     let sums = 0
 
@@ -278,22 +308,11 @@ function problem6(){
     let squareOfSums = sums * sums
     let result = squareOfSums - sumOfSquares
     
-
-    //  JS for HTML Interaction
-    let answerContainer = document.getElementById("answer-container-6");
-    answerContainer.innerHTML = result
-
-    if(answerContainer.className === 'answer-container'){
-        answerContainer.className = 'answer-container-showing'
-        document.getElementById('answer-button-6').innerHTML = 'Hide Answer'
-    } else if(answerContainer.className === 'answer-container-showing'){
-        answerContainer.className = 'answer-container'
-        document.getElementById('answer-button-6').innerHTML = 'Show Answer'
-    }
+    //! Sets Solution on DOM
+    const runTimeMs = (performance.now() - startTime).toFixed(4)
+    showAnswerBox(problemNumber, result, runTimeMs)
 }
-    // problem6()
-    
-    document.getElementById('answer-button-6').addEventListener('click', problem6)
+document.getElementById('answer-button-6').addEventListener('click', problem6)
 
 
 
@@ -310,6 +329,22 @@ function problem6(){
 // What is the 10001st prime number?
 
 function problem7(){
+    //! Configures the DOM Renders
+    const problemNumber = 7
+    // let shouldRun = checkShouldRun(problemNumber)
+    // if(!shouldRun) return hideAnswerBox(problemNumber)
+    // displayLoader(problemNumber)
+    let answerContainer = document.getElementById(`answer-container-${problemNumber}`)
+    let localLoader = document.getElementById(`loader${problemNumber}`)
+    localLoader.class = 'loader-hidden'
+    // let clonedLoader = loader.cloneNode(true)
+    // clonedLoader.id = `loader${problemNumber}`
+    // answerContainer.appendChild(loader)
+    // console.log(answerContainer)
+
+    //! Solution Code
+    console.log('runnig solution')
+    const startTime = performance.now()
     let primeNumbersArray = []
 
     let num = 2
@@ -330,23 +365,12 @@ function problem7(){
         }
     }
     let result = primeNumbersArray.pop()
-    
 
-    //  JS for HTML Interaction
-    let answerContainer = document.getElementById("answer-container-7");
-    answerContainer.innerHTML = result
-
-    if(answerContainer.className === 'answer-container'){
-        answerContainer.className = 'answer-container-showing'
-        document.getElementById('answer-button-7').innerHTML = 'Hide Answer'
-    } else if(answerContainer.className === 'answer-container-showing'){
-        answerContainer.className = 'answer-container'
-        document.getElementById('answer-button-7').innerHTML = 'Show Answer'
-    }
+    //! Sets Solution on DOM
+    const runTimeMs = (performance.now() - startTime).toFixed(4)
+    showAnswerBox(problemNumber, result, runTimeMs)
 }
-    // problem7()
-    
-    document.getElementById('answer-button-7').addEventListener('click', problem7)
+document.getElementById('answer-button-7').addEventListener('click', problem7)
 
 
 
@@ -385,21 +409,27 @@ function problem7(){
 // Find the thirteen adjacent digits in the 1000-digit number that have the greatest product. What is the value of this product?
 
 function problem8(){
-    //console.time('Problem 8 Runtime')
-    let num =       '7316717653133062491922511967442657474235534919493496983520312774506326239578318016984801869478851843858615607891129494954595017379583319528532088055111254069874715852386305071569329096329522744304355766896648950445244523161731856403098711121722383113622298934233803081353362766142828064444866452387493035890729629049156044077239071381051585930796086670172427121883998797908792274921901699720888093776657273330010533678812202354218097512545405947522435258490771167055601360483958644670632441572215539753697817977846174064955149290862569321978468622482839722413756570560574902614079729686524145351004748216637048440319989000889524345065854122758866688116427171479924442928230863465674813919123162824586178664583591245665294765456828489128831426076900422421902267105562632111110937054421750694165896040807198403850962455444362981230987879927244284909188845801561660979191338754992005240636899125607176060588611646710940507754100225698315520005593572972571636269561882670428252483600823257530420752963450'
+    //! Configures the DOM Renders
+    const problemNumber = 8
+    let shouldRun = checkShouldRun(problemNumber)
+    if(!shouldRun) return hideAnswerBox(problemNumber)
+    displayLoader(problemNumber)
+
+    //! Solution Code
+    const startTime = performance.now()
+    let num = '7316717653133062491922511967442657474235534919493496983520312774506326239578318016984801869478851843858615607891129494954595017379583319528532088055111254069874715852386305071569329096329522744304355766896648950445244523161731856403098711121722383113622298934233803081353362766142828064444866452387493035890729629049156044077239071381051585930796086670172427121883998797908792274921901699720888093776657273330010533678812202354218097512545405947522435258490771167055601360483958644670632441572215539753697817977846174064955149290862569321978468622482839722413756570560574902614079729686524145351004748216637048440319989000889524345065854122758866688116427171479924442928230863465674813919123162824586178664583591245665294765456828489128831426076900422421902267105562632111110937054421750694165896040807198403850962455444362981230987879927244284909188845801561660979191338754992005240636899125607176060588611646710940507754100225698315520005593572972571636269561882670428252483600823257530420752963450'
     let newNum = num.split('')
 
     let largestProduct = 0
     let currentProduct = 0
 
-        //  This solution takes an average of < 2 ms
+    //  This solution takes an average of < 2 ms :
     for(let i = 0; i < newNum.length- 13; i++){
         currentProduct = parseInt(newNum[i]) * parseInt(newNum[i+1]) *parseInt(newNum[i+2]) *parseInt(newNum[i+3]) *parseInt(newNum[i+4]) *parseInt(newNum[i+5]) *parseInt(newNum[i+6]) *parseInt(newNum[i+7]) *parseInt(newNum[i+8]) *parseInt(newNum[i+9]) *parseInt(newNum[i+10]) *parseInt(newNum[i+11]) *parseInt(newNum[i+12]) 
         
         currentProduct > largestProduct ? largestProduct = currentProduct : largestProduct = largestProduct
     }
-
-        //  This solution takes an average of 7 ms.
+    //  This alternatesolution takes an average of 7 ms :
     // for(let i = 0; i < num.length; i++){
     //     const nums = [...num.slice(i, i + 12)]
     //     const sum = nums.reduce((final, num) => final * parseInt(num), 1)
@@ -407,22 +437,10 @@ function problem8(){
     //         largestProduct = sum
     //     }
     // }
+    const result = largestProduct
 
-    // console.log(largestProduct)
-    // console.timeEnd('Problem 8 Runtime')
-
-        //  JS for HTML Interaction
-        let answerContainer = document.getElementById("answer-container-8");
-        answerContainer.innerHTML = largestProduct
-    
-        if(answerContainer.className === 'answer-container'){
-            answerContainer.className = 'answer-container-showing'
-            document.getElementById('answer-button-8').innerHTML = 'Hide Answer'
-        } else if(answerContainer.className === 'answer-container-showing'){
-            answerContainer.className = 'answer-container'
-            document.getElementById('answer-button-8').innerHTML = 'Show Answer'
-        }
-    }
-    // problem8()
-    
-    document.getElementById('answer-button-8').addEventListener('click', problem8)
+    //! Sets Solution on DOM
+    const runTimeMs = (performance.now() - startTime).toFixed(4)
+    showAnswerBox(problemNumber, result, runTimeMs)
+}
+document.getElementById('answer-button-8').addEventListener('click', problem8)
